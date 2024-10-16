@@ -10,8 +10,12 @@ const options = {
   },
 };
 
-const fetchTrendingMovies = async () => {
+export const fetchTrendingMovies = async () => {
   const response = await axios.get('/trending/movie/day', options);
   return response.data.results;
 };
-export default fetchTrendingMovies;
+
+export const fetchMovieDetails = async movieId => {
+  const response = await axios.get(`/movie/${movieId}`, options);
+  return response.data;
+};

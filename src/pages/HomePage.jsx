@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import fetchTrendingMovies from '../tmdb-api';
+import { fetchTrendingMovies } from '../tmdb-api';
 import MovieList from '../components/MovieList/MovieList';
 import Loader from '../components/Loader/Loader';
 
@@ -14,8 +14,8 @@ const HomePage = () => {
       try {
         const trendingMovies = await fetchTrendingMovies();
         setMovies(trendingMovies);
-      } catch (err) {
-        setError(`Failed to load movies: ${err.message}`);
+      } catch {
+        setError('Failed to load movies. Please try again later.');
       } finally {
         setLoading(false);
       }
