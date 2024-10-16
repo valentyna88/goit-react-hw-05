@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useLocation, useParams } from 'react-router-dom';
 import Loader from '../components/Loader/Loader';
 import { fetchMovieDetails } from '../tmdb-api';
+import GoBack from '../components/GoBack/GoBack';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -9,6 +10,8 @@ const MovieDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const location = useLocation();
+  const backLinkHref = location.state ?? '/';
   useEffect(() => {
     const loadMoviesDetails = async () => {
       setLoading(true);
@@ -30,6 +33,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
+      <GoBack to={backLinkHref}>Go back</GoBack>
       <h1>{movie.title}</h1>
       <img src="" alt={movie.title} />
       <p>{movie.overview}</p>
