@@ -1,3 +1,5 @@
+import './App.module.css';
+import css from './App.module.css';
 import { Route, Routes } from 'react-router-dom';
 import HomePage from '../../pages/HomePage';
 import MoviesPage from '../../pages/MoviesPage';
@@ -5,12 +7,12 @@ import NotFoundPage from '../../pages/NotFoundPage';
 import MovieDetailsPage from '../../pages/MovieDetailsPage';
 import MovieCast from '../MovieCast/MovieCast';
 import MovieReviews from '../MovieReviews/MovieReviews';
-import './App.module.css';
+import Navigation from '../Navigation/Navigation';
 
 function App() {
   return (
-    <div>
-      <h1>App is rendering</h1>
+    <div className={css.container}>
+      <Navigation />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<MoviesPage />} />
