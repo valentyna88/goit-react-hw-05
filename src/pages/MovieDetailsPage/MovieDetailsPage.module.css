@@ -1,0 +1,12 @@
+.poster {
+  width: 400px;
+}
+.cardWrapper {
+  display: flex;
+  gap: 30px;
+}
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
