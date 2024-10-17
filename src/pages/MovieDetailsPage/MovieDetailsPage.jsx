@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import { fetchMovieDetails } from '../../tmdb-api';
 import GoBack from '../../components/GoBack/GoBack';
@@ -77,8 +77,19 @@ const MovieDetailsPage = () => {
             </ul>
           </div>
         </div>
-        <Outlet />
       </div>
+      <div className={css.links}>
+        <p>Additional information</p>
+        <ul>
+          <li>
+            <NavLink to="cast">Cast</NavLink>
+          </li>
+          <li>
+            <NavLink to="reviews">Reviews</NavLink>
+          </li>
+        </ul>
+      </div>
+      <Outlet />
     </div>
   );
 };
