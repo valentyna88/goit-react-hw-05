@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import css from './MovieReviews.module.css';
+import { fetchMovieReviews } from '../../tmdb-api';
 
 const MovieReviews = () => {
   const { movieId } = useParams();
@@ -12,6 +13,7 @@ const MovieReviews = () => {
   useEffect(() => {
     const loadMovieReviews = async () => {
       setLoading(true);
+      setError(null);
       try {
         const reviewsData = await fetchMovieReviews(movieId);
         setReviews(reviewsData);
@@ -26,7 +28,8 @@ const MovieReviews = () => {
 
   if (loading) return <Loader />;
   if (error) return <h2>{error}</h2>;
-  if (reviews.length === 0) return <p>No reviews available for this movie.</p>;
+  if (!reviews || reviews.length === 0)
+    return <p>No reviews available for this movie.</p>;
 
   return (
     <ul className={css.reviewsList}>

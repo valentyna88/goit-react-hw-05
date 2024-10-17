@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import css from './MovieCast.module.css';
+import { fetchMovieCast } from '../../tmdb-api';
 
 const MovieCast = () => {
   const { movieId } = useParams();
