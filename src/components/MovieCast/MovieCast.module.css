@@ -1,0 +1,18 @@
+.castList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.castItem {
+  width: 150px;
+}
+.castImage {
+  height: 150px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.character {
+  font-size: smaller;
+}

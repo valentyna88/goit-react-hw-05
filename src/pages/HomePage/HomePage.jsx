@@ -24,14 +24,13 @@ const HomePage = () => {
     loadMovies();
   }, []);
 
-  if (error) return <h2>{error}</h2>;
-
   return (
-    <div>
-      {loading && <Loader />}
+    <main className={css.container}>
       <h1 className={css.title}>Trending today</h1>
       <MovieList movies={movies} />
-    </div>
+      {loading && <Loader />}
+      {error && <h2>{error}</h2>}
+    </main>
   );
 };
 
