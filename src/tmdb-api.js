@@ -11,21 +11,30 @@ const options = {
 };
 
 export const fetchTrendingMovies = async () => {
-  const response = await axios.get('/trending/movie/day', options);
+  const response = await axios.get(
+    '/trending/movie/day?include_adult=false&language=en-US',
+    options
+  );
   return response.data.results;
 };
 
 export const fetchMovieDetails = async movieId => {
-  const response = await axios.get(`/movie/${movieId}`, options);
+  const response = await axios.get(`/movie/${movieId}?language=en-US`, options);
   return response.data;
 };
 
 export const fetchMovieCast = async movieId => {
-  const response = await axios.get(`/movie/${movieId}/credits`, options);
+  const response = await axios.get(
+    `/movie/${movieId}/credits?language=en-US`,
+    options
+  );
   return response.data.cast;
 };
 
 export const fetchMovieReviews = async movieId => {
-  const response = await axios.get(`/movie/${movieId}/reviews`, options);
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?language=en-US`,
+    options
+  );
   return response.data.results;
 };

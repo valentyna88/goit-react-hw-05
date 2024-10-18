@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { fetchTrendingMovies } from '../tmdb-api';
-import MovieList from '../components/MovieList/MovieList';
-import Loader from '../components/Loader/Loader';
+import { fetchTrendingMovies } from '../../tmdb-api';
+import MovieList from '../../components/MovieList/MovieList';
+import Loader from '../../components/Loader/Loader';
+import css from './HomePage.module.css';
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -23,12 +24,12 @@ const HomePage = () => {
     loadMovies();
   }, []);
 
-  if (loading) return <Loader />;
   if (error) return <h2>{error}</h2>;
 
   return (
     <div>
-      <h1>Trending today</h1>
+      {loading && <Loader />}
+      <h1 className={css.title}>Trending today</h1>
       <MovieList movies={movies} />
     </div>
   );

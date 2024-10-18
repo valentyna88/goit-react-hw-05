@@ -1,7 +1,6 @@
-import './App.module.css';
 import css from './App.module.css';
 import { Route, Routes } from 'react-router-dom';
-import HomePage from '../../pages/HomePage';
+import HomePage from '../../pages/HomePage/HomePage';
 import MoviesPage from '../../pages/MoviesPage';
 import NotFoundPage from '../../pages/NotFoundPage';
 import MovieDetailsPage from '../../pages/MovieDetailsPage/MovieDetailsPage';
@@ -20,7 +19,6 @@ function App() {
           <Route path="cast" element={<MovieCast />} />
           <Route path="reviews" element={<MovieReviews />} />
         </Route>
-
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

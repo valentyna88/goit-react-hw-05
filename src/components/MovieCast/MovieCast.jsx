@@ -25,12 +25,12 @@ const MovieCast = () => {
     loadMovieCast();
   }, [movieId]);
 
-  if (loading) return <Loader />;
   if (error) return <h2>{error}</h2>;
   if (!cast) return <p>No cast information available.</p>;
 
   return (
     <ul className={css.castList}>
+      {loading && <Loader />}
       {cast.map(({ id, name, profile_path, character }) => (
         <li key={id} className={css.castItem}>
           <img
