@@ -6,23 +6,24 @@ const MovieList = ({ movies }) => {
     'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg';
   return (
     <ul className={css.movieList}>
-      {movies.map(({ id, title, poster_path }) => (
-        <li key={id} className={css.movieItem}>
-          <Link to={`/movies/${id}`}>
-            <img
-              className={css.moviePoster}
-              src={
-                poster_path
-                  ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                  : defaultImg
-              }
-              width={250}
-              alt="poster"
-            />
-            <p className={css.movieTitle}>{title}</p>
-          </Link>
-        </li>
-      ))}
+      {Array.isArray(movies) &&
+        movies.map(({ id, title, poster_path }) => (
+          <li key={id} className={css.movieItem}>
+            <Link to={`/movies/${id}`}>
+              <img
+                className={css.moviePoster}
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : defaultImg
+                }
+                width={250}
+                alt="poster"
+              />
+              <p className={css.movieTitle}>{title}</p>
+            </Link>
+          </li>
+        ))}
     </ul>
   );
 };

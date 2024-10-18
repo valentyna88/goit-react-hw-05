@@ -36,7 +36,7 @@ const MovieDetailsPage = () => {
     movie;
 
   return (
-    <div className={css.card}>
+    <main className={css.card}>
       <GoBack to={backLinkHref}>Go back</GoBack>
       <div className={css.cardWrapper}>
         <img
@@ -90,7 +90,7 @@ const MovieDetailsPage = () => {
         </ul>
       </div>
       <Outlet />
-    </div>
+    </main>
   );
 };
 
