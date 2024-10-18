@@ -1,0 +1,22 @@
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.reviewItem {
+  height: 300px;
+  border: 1px solid #10333d;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.reviewAuthor {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.avatar {
+  border-radius: 50%;
+  height: 50px;
+}

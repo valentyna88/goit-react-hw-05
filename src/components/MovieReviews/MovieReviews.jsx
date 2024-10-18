@@ -26,20 +26,40 @@ const MovieReviews = () => {
     loadMovieReviews();
   }, [movieId]);
 
-  if (loading) return <Loader />;
+  const defaultImg =
+    'https://dl-media.viber.com/10/share/2/long/vibes/icon/image/0x0/95e0/5688fdffb84ff8bed4240bcf3ec5ac81ce591d9fa9558a3a968c630eaba195e0.jpg';
+
   if (error) return <h2>{error}</h2>;
   if (!reviews || reviews.length === 0)
     return <p>No reviews available for this movie.</p>;
 
   return (
-    <ul className={css.reviewsList}>
-      {reviews.map(({ id, author, content }) => (
-        <li key={id} className={css.reviewItem}>
-          <h3>Review by {author}</h3>
-          <p>{content}</p>
-        </li>
-      ))}
-    </ul>
+    <section>
+      {loading && <Loader />}
+      <ul className={css.reviewsList}>
+        {reviews.length > 0 &&
+          reviews.map(
+            ({ id, author, content, author_details: { avatar_path } }) => (
+              <li key={id} className={css.reviewItem}>
+                <div className={css.reviewAuthor}>
+                  <img
+                    className={css.avatar}
+                    src={
+                      avatar_path
+                        ? `https://image.tmdb.org/t/p/w500${avatar_path}`
+                        : defaultImg
+                    }
+                    width={50}
+                    alt={author}
+                  />
+                  <h4>Review by {author}</h4>
+                </div>
+                <p className={css.text}>{content}</p>
+              </li>
+            )
+          )}
+      </ul>
+    </section>
   );
 };
 
