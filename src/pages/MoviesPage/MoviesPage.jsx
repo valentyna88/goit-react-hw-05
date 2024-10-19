@@ -11,15 +11,25 @@ const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchFilter = searchParams.get('searchFilter') ?? '';
+
+  const searchFilter = searchParams.get('searchFilter');
+
+  const handleSearchFilter = newSearchFilter => {
+    searchParams.set('searchFilter', newSearchFilter);
+    setSearchParams(searchParams);
+  };
 
   useEffect(() => {
     if (!searchFilter) return;
     const loadFilteredMovies = async () => {
-      setLoading(true);
       try {
+        setLoading(true);
         const data = await fetchMovies(searchFilter);
-        setFilteredMovies(data.results);
+        if (data.length === 0) {
+          setError('There are no movies with this request. Please, try again');
+          return;
+        }
+        setFilteredMovies(data);
       } catch {
         setError('There are no movies with this request.');
       } finally {
@@ -29,17 +39,12 @@ const MoviesPage = () => {
     loadFilteredMovies();
   }, [searchFilter]);
 
-  const handleSearchFilter = newSearchFilter => {
-    searchParams.set('searchFilter', newSearchFilter);
-    setSearchParams(searchParams);
-  };
-
   return (
     <main className={css.container}>
-      <SearchBox searchFilter={searchFilter} onSearch={handleSearchFilter} />
       {loading && <Loader />}
-      <MovieList filteredMovies={filteredMovies} />
-      {error && <h2>{error}</h2>}
+      <SearchBox filter={searchFilter} onSearch={handleSearchFilter} />
+
+      {!loading && !error && <MovieList movies={filteredMovies} />}
     </main>
   );
 };

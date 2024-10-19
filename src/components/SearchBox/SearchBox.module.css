@@ -1,0 +1,19 @@
+.searchBox {
+  display: flex;
+  align-items: center;
+  width: 450px;
+  margin: 30px auto;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: border 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.input {
+  display: block;
+  width: 450px;
+  padding: 8px;
+  border: none;
+}
