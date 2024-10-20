@@ -1,48 +1,47 @@
 import axios from 'axios';
 
-const API_READ_ACCESS_TOKEN =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTBlZjljZjM2YWQzZDJiYTdkN2YyMWMwNzVlM2YzMSIsIm5iZiI6MTcyOTA2MTkwNy42MDIzMjEsInN1YiI6IjY3MGRhMzdmZDVmOTNhM2RhMGJiZmIwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IINcn_N8_8mGfgti6HoUJrLh0ZGE4wpCvM2kH-pMs84';
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
-
-const options = {
+const apiClient = axios.create({
+  baseURL: 'https://api.themoviedb.org/3',
   headers: {
-    Authorization: `Bearer ${API_READ_ACCESS_TOKEN}`,
+    Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTBlZjljZjM2YWQzZDJiYTdkN2YyMWMwNzVlM2YzMSIsIm5iZiI6MTcyOTA2MTkwNy42MDIzMjEsInN1YiI6IjY3MGRhMzdmZDVmOTNhM2RhMGJiZmIwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IINcn_N8_8mGfgti6HoUJrLh0ZGE4wpCvM2kH-pMs84`,
   },
-};
+  params: {
+    language: 'en-US',
+    include_adult: false,
+  },
+});
 
 export const fetchTrendingMovies = async () => {
-  const response = await axios.get(
-    '/trending/movie/day?include_adult=false&language=en-US',
-    options
-  );
-  return response.data.results;
+  const {
+    data: { results },
+  } = await apiClient.get('/trending/movie/day');
+  return results;
 };
 
 export const fetchMovieDetails = async movieId => {
-  const response = await axios.get(`/movie/${movieId}?language=en-US`, options);
-  return response.data;
+  const { data } = await apiClient.get(`/movie/${movieId}`);
+  return data;
 };
 
 export const fetchMovieCast = async movieId => {
-  const response = await axios.get(
-    `/movie/${movieId}/credits?language=en-US`,
-    options
-  );
-  return response.data.cast;
+  const {
+    data: { cast },
+  } = await apiClient.get(`/movie/${movieId}/credits`);
+  return cast;
 };
 
 export const fetchMovieReviews = async movieId => {
-  const response = await axios.get(
-    `/movie/${movieId}/reviews?language=en-US`,
-    options
-  );
-  return response.data.results;
+  const {
+    data: { results },
+  } = await apiClient.get(`/movie/${movieId}/reviews`);
+  return results;
 };
 
 export const fetchMovies = async query => {
-  const response = await axios.get(
-    `/search/movie?query=${query}&include_adult=false&language=en-US`,
-    options
-  );
-  return response.data.results;
+  const {
+    data: { results },
+  } = await apiClient.get('/search/movie', {
+    params: { query },
+  });
+  return results;
 };
