@@ -12,7 +12,7 @@ const MoviesPage = () => {
   const [error, setError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const searchFilter = searchParams.get('searchFilter');
+  const searchFilter = searchParams.get('searchFilter') ?? '';
 
   const handleSearchFilter = newSearchFilter => {
     searchParams.set('searchFilter', newSearchFilter);

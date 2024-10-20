@@ -12,7 +12,7 @@ const MovieDetailsPage = () => {
   const [error, setError] = useState(null);
 
   const location = useLocation();
-  const backLinkHref = location.state ?? '/';
+  const backLinkHref = location.state ?? '/movies';
   useEffect(() => {
     const loadMoviesDetails = async () => {
       setLoading(true);
@@ -82,10 +82,14 @@ const MovieDetailsPage = () => {
         <p>Additional information</p>
         <ul>
           <li>
-            <NavLink to="cast">Cast</NavLink>
+            <NavLink to="cast" state={{ ...location.state }}>
+              Cast
+            </NavLink>
           </li>
           <li>
-            <NavLink to="reviews">Reviews</NavLink>
+            <NavLink to="reviews" state={{ ...location.state }}>
+              Reviews
+            </NavLink>
           </li>
         </ul>
       </div>
