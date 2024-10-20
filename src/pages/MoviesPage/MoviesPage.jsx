@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import css from './MoviesPage.module.css';
-import { fetchMovies } from '../../tmdb-api';
+import { fetchMovies } from '../../api';
 import { useSearchParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import MovieList from '../../components/MovieList/MovieList';

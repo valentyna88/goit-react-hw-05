@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import css from './MovieReviews.module.css';
-import { fetchMovieReviews } from '../../tmdb-api';
+import { fetchMovieReviews } from '../../api';
 
 const MovieReviews = () => {
   const { movieId } = useParams();

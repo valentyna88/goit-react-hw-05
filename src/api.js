@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiClient = axios.create({
+const moviesInstance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   headers: {
     Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTBlZjljZjM2YWQzZDJiYTdkN2YyMWMwNzVlM2YzMSIsIm5iZiI6MTcyOTA2MTkwNy42MDIzMjEsInN1YiI6IjY3MGRhMzdmZDVmOTNhM2RhMGJiZmIwNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.IINcn_N8_8mGfgti6HoUJrLh0ZGE4wpCvM2kH-pMs84`,
@@ -14,33 +14,33 @@ const apiClient = axios.create({
 export const fetchTrendingMovies = async () => {
   const {
     data: { results },
-  } = await apiClient.get('/trending/movie/day');
+  } = await moviesInstance.get('/trending/movie/day');
   return results;
 };
 
 export const fetchMovieDetails = async movieId => {
-  const { data } = await apiClient.get(`/movie/${movieId}`);
+  const { data } = await moviesInstance.get(`/movie/${movieId}`);
   return data;
 };
 
 export const fetchMovieCast = async movieId => {
   const {
     data: { cast },
-  } = await apiClient.get(`/movie/${movieId}/credits`);
+  } = await moviesInstance.get(`/movie/${movieId}/credits`);
   return cast;
 };
 
 export const fetchMovieReviews = async movieId => {
   const {
     data: { results },
-  } = await apiClient.get(`/movie/${movieId}/reviews`);
+  } = await moviesInstance.get(`/movie/${movieId}/reviews`);
   return results;
 };
 
 export const fetchMovies = async query => {
   const {
     data: { results },
-  } = await apiClient.get('/search/movie', {
+  } = await moviesInstance.get('/search/movie', {
     params: { query },
   });
   return results;

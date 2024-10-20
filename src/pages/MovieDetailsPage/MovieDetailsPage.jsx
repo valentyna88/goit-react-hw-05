@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
-import { fetchMovieDetails } from '../../tmdb-api';
+import { fetchMovieDetails } from '../../api';
 import GoBack from '../../components/GoBack/GoBack';
 import css from './MovieDetailsPage.module.css';
 

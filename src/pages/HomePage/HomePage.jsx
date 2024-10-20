@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTrendingMovies } from '../../tmdb-api';
+import { fetchTrendingMovies } from '../../api';
 import MovieList from '../../components/MovieList/MovieList';
 import Loader from '../../components/Loader/Loader';
 import css from './HomePage.module.css';
