@@ -5,7 +5,7 @@
   gap: 12px;
 }
 .reviewItem {
-  height: 300px;
+  height: auto;
   border: 1px solid #10333d;
   border-radius: 10px;
   overflow: hidden;
@@ -19,4 +19,9 @@
 .avatar {
   border-radius: 50%;
   height: 50px;
+}
+.text {
+  overflow: auto;
+  height: 150px;
+  scrollbar-width: thin;
 }
