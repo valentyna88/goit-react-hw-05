@@ -62,7 +62,7 @@ const MovieDetailsPage = () => {
 
           <h3 className={css.subtitle}>User Score: </h3>
           <p className={css.text}>
-            {vote_average ? `${vote_average * 10}%` : '0'}
+            {vote_average ? `${(vote_average * 10).toFixed(2)}%` : '0'}
           </p>
 
           <h3 className={css.subtitle}>Overview: </h3>
