@@ -4,6 +4,7 @@
   justify-content: center;
   gap: 20px;
   width: 980px;
+  padding: 0 20px 30px;
   margin: 0 auto;
 }
 .movieItem {

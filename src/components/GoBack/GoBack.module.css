@@ -1,0 +1,32 @@
+.goBackWrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.goBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+.goBackBtn:hover {
+  background-color: #e0e0e0;
+  color: orangered;
+  border-color: orangered;
+}
+.icon {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.goBackBtn:hover .icon {
+  transform: translateX(-4px);
+}
