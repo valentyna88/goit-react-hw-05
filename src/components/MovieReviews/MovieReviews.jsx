@@ -52,7 +52,7 @@ const MovieReviews = () => {
                     width={50}
                     alt={author}
                   />
-                  <h4>Review by {author}</h4>
+                  <h4>{author}</h4>
                 </div>
                 <p className={css.text}>{content}</p>
               </li>
