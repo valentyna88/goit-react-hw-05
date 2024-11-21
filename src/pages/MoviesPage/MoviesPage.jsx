@@ -4,6 +4,7 @@ import { fetchMovies } from '../../api';
 import { useSearchParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import MovieList from '../../components/MovieList/MovieList';
+import DocumentTitle from '../../components/DocumentTitle';
 
 const MoviesPage = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
@@ -39,12 +40,15 @@ const MoviesPage = () => {
   }, [searchFilter]);
 
   return (
-    <main>
-      {loading && <Loader />}
-      <SearchBox filter={searchFilter} onSearch={handleSearchFilter} />
+    <>
+      <DocumentTitle>Movies</DocumentTitle>
+      <main>
+        {loading && <Loader />}
+        <SearchBox filter={searchFilter} onSearch={handleSearchFilter} />
 
-      {!loading && !error && <MovieList movies={filteredMovies} />}
-    </main>
+        {!loading && !error && <MovieList movies={filteredMovies} />}
+      </main>
+    </>
   );
 };
 

@@ -5,6 +5,7 @@ import { fetchMovieDetails } from '../../api';
 import GoBack from '../../components/GoBack/GoBack';
 import css from './MovieDetailsPage.module.css';
 import clsx from 'clsx';
+import DocumentTitle from '../../components/DocumentTitle';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -41,71 +42,74 @@ const MovieDetailsPage = () => {
   };
 
   return (
-    <main className={css.container}>
-      <GoBack to={backLinkHref}>Go back</GoBack>
-      <h2 className={css.title}>{title}</h2>
-      <section className={css.cardWrapper}>
-        <img
-          className={css.poster}
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w500${poster_path}`
-              : 'path-to-placeholder-image.jpg'
-          }
-          alt={title}
-        />
-        <div className={css.infoWrapper}>
-          <h3 className={css.subtitle}>Release Year: </h3>
-          <p className={css.text}>
-            {release_date ? release_date.split('-')[0] : ''}
-          </p>
+    <>
+      <DocumentTitle>MovieDetails</DocumentTitle>
+      <main className={css.container}>
+        <GoBack to={backLinkHref}>Go back</GoBack>
+        <h2 className={css.title}>{title}</h2>
+        <section className={css.cardWrapper}>
+          <img
+            className={css.poster}
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                : 'path-to-placeholder-image.jpg'
+            }
+            alt={title}
+          />
+          <div className={css.infoWrapper}>
+            <h3 className={css.subtitle}>Release Year: </h3>
+            <p className={css.text}>
+              {release_date ? release_date.split('-')[0] : ''}
+            </p>
 
-          <h3 className={css.subtitle}>User Score: </h3>
-          <p className={css.text}>
-            {vote_average ? `${(vote_average * 10).toFixed(2)}%` : '0'}
-          </p>
+            <h3 className={css.subtitle}>User Score: </h3>
+            <p className={css.text}>
+              {vote_average ? `${(vote_average * 10).toFixed(2)}%` : '0'}
+            </p>
 
-          <h3 className={css.subtitle}>Overview: </h3>
-          <p className={css.text}>{overview}</p>
+            <h3 className={css.subtitle}>Overview: </h3>
+            <p className={css.text}>{overview}</p>
 
-          <h3 className={css.subtitle}>Genres: </h3>
-          <ul className={css.list}>
-            {genres && genres.length > 0 ? (
-              genres.map(genre => (
-                <li className={css.item} key={genre.id}>
-                  {genre.name}
-                </li>
-              ))
-            ) : (
-              <li className={css.item}>No genres available</li>
-            )}
-          </ul>
-        </div>
-      </section>
+            <h3 className={css.subtitle}>Genres: </h3>
+            <ul className={css.list}>
+              {genres && genres.length > 0 ? (
+                genres.map(genre => (
+                  <li className={css.item} key={genre.id}>
+                    {genre.name}
+                  </li>
+                ))
+              ) : (
+                <li className={css.item}>No genres available</li>
+              )}
+            </ul>
+          </div>
+        </section>
 
-      <ul className={css.infoLinks}>
-        <li>
-          <NavLink
-            to="cast"
-            className={buildLinkClass}
-            state={{ ...location.state }}
-          >
-            Cast
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="reviews"
-            className={buildLinkClass}
-            state={{ ...location.state }}
-          >
-            Reviews
-          </NavLink>
-        </li>
-      </ul>
+        <ul className={css.infoLinks}>
+          <li>
+            <NavLink
+              to="cast"
+              className={buildLinkClass}
+              state={{ ...location.state }}
+            >
+              Cast
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="reviews"
+              className={buildLinkClass}
+              state={{ ...location.state }}
+            >
+              Reviews
+            </NavLink>
+          </li>
+        </ul>
 
-      <Outlet />
-    </main>
+        <Outlet />
+      </main>
+    </>
   );
 };
 
