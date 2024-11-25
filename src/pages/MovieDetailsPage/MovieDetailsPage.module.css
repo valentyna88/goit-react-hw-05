@@ -1,6 +1,5 @@
 .container {
   padding: 20px;
-  /* width: 80%; */
   width: 100%;
   margin: 20px auto;
 }
@@ -24,7 +23,6 @@
   width: 100%;
   max-width: 300px;
   border-radius: 8px;
-  /* margin-left: 20px; */
   margin-bottom: 20px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -36,8 +34,6 @@
 }
 .infoItem {
   display: flex;
-  /* align-items: center;
-  margin-bottom: 10px; */
   flex-direction: column;
   align-items: flex-start;
 }
@@ -45,18 +41,12 @@
   font-size: 1rem;
   font-weight: bold;
   color: #bbbbbb;
-  /* margin-right: 10px;
-  min-width: 120px; */
   margin-bottom: 5px;
 }
 .dashedLine {
-  /* flex-shrink: 0; */
-  /* width: 100px; */
   width: 100%;
   border-bottom: 1px dashed #bbbbbb;
   margin-bottom: 10px;
-  /* margin: 0 10px;
-  align-self: center; */
 }
 .text {
   color: #eeeeee;
@@ -79,7 +69,6 @@
 .infoLinks {
   display: flex;
   gap: 10px;
-  /* margin-bottom: 20px; */
   padding-bottom: 20px;
   background-color: #32353f;
 }
@@ -102,9 +91,67 @@
 }
 
 @media (min-width: 768px) {
-  .cardWrapper {
-    display: flex;
-    gap: 20px;
-    justify-content: space-between;
+  .container {
+    width: 90%;
   }
+  .title {
+    font-size: 2rem;
+  }
+  .cardWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  /* .infoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  } */
+  .subtitle {
+    margin-right: 10px;
+    min-width: 120px;
+  }
+  .dashedLine {
+    flex-shrink: 0;
+    width: 50px;
+    margin: 0 10px;
+    align-self: center;
+  }
+  .poster {
+    margin-left: 20px;
+  }
+  .text {
+    flex-grow: 1;
+  }
+  .infoWrapper {
+    width: 60%;
+  }
+  .infoLinks {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    width: 80%;
+  }
+  .title {
+    font-size: 2.5rem;
+  }
+  .infoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .subtitle {
+    margin-right: 15px;
+  }
+  /* .infoLinks {
+    flex-direction: row;
+    justify-content: center;
+    gap: 50px;
+  } */
 }
