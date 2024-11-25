@@ -46,7 +46,9 @@ const MovieDetailsPage = () => {
       <DocumentTitle>MovieDetails</DocumentTitle>
       <main className={css.container}>
         <GoBack to={backLinkHref}>Go back</GoBack>
-        <h2 className={css.title}>{title}</h2>
+        <div className={css.titleBlock}>
+          <h2 className={css.title}>{title}</h2>
+        </div>
         <section className={css.cardWrapper}>
           <img
             className={css.poster}
@@ -58,31 +60,43 @@ const MovieDetailsPage = () => {
             alt={title}
           />
           <div className={css.infoWrapper}>
-            <h3 className={css.subtitle}>Release Year: </h3>
-            <p className={css.text}>
-              {release_date ? release_date.split('-')[0] : ''}
-            </p>
+            <div className={css.infoItem}>
+              <h3 className={css.subtitle}>Release Year: </h3>
+              <span className={css.dashedLine}></span>
+              <p className={css.text}>
+                {release_date ? release_date.split('-')[0] : ''}
+              </p>
+            </div>
 
-            <h3 className={css.subtitle}>User Score: </h3>
-            <p className={css.text}>
-              {vote_average ? `${(vote_average * 10).toFixed(2)}%` : '0'}
-            </p>
+            <div className={css.infoItem}>
+              <h3 className={css.subtitle}>User Score: </h3>
+              <span className={css.dashedLine}></span>
+              <p className={css.text}>
+                {vote_average ? `${(vote_average * 10).toFixed(2)}%` : '0'}
+              </p>
+            </div>
 
-            <h3 className={css.subtitle}>Overview: </h3>
-            <p className={css.text}>{overview}</p>
+            <div className={css.infoItem}>
+              <h3 className={css.subtitle}>Overview: </h3>
+              <span className={css.dashedLine}></span>
+              <p className={css.text}>{overview}</p>
+            </div>
 
-            <h3 className={css.subtitle}>Genres: </h3>
-            <ul className={css.list}>
-              {genres && genres.length > 0 ? (
-                genres.map(genre => (
-                  <li className={css.item} key={genre.id}>
-                    {genre.name}
-                  </li>
-                ))
-              ) : (
-                <li className={css.item}>No genres available</li>
-              )}
-            </ul>
+            <div className={css.infoItem}>
+              <h3 className={css.subtitle}>Genres: </h3>
+              <span className={css.dashedLine}></span>
+              <ul className={css.list}>
+                {genres && genres.length > 0 ? (
+                  genres.map(genre => (
+                    <li className={css.item} key={genre.id}>
+                      {genre.name}
+                    </li>
+                  ))
+                ) : (
+                  <li className={css.item}>No genres available</li>
+                )}
+              </ul>
+            </div>
           </div>
         </section>
 

@@ -11,17 +11,21 @@ const MovieList = ({ movies }) => {
         movies.map(({ id, title, poster_path }) => (
           <li key={id} className={css.movieItem}>
             <Link to={`/movies/${id}`} state={location}>
-              <img
-                className={css.img}
-                src={
-                  poster_path
-                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
-                    : defaultImg
-                }
-                width={250}
-                alt="poster"
-              />
-              <p className={css.movieTitle}>{title}</p>
+              <div>
+                <img
+                  className={css.img}
+                  src={
+                    poster_path
+                      ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                      : defaultImg
+                  }
+                  width={250}
+                  alt="poster"
+                />
+              </div>
+              <div>
+                <p className={css.movieTitle}>{title}</p>
+              </div>
             </Link>
           </li>
         ))}

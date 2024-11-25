@@ -8,6 +8,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  background-image: url('./assets/bg-img.jpg');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+}
+
 h1,
 h2,
 h3,
