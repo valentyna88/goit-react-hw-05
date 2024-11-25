@@ -45,9 +45,11 @@ const MovieCast = () => {
             width={150}
             alt={name}
             className={css.castImage}
-          />{' '}
-          <h3 className={css.name}>{name}</h3>
-          <p className={css.character}>{character}</p>
+          />
+          <div className={css.castInfo}>
+            <h3 className={css.name}>{name}</h3>
+            <p className={css.character}>{character}</p>
+          </div>
         </li>
       ))}
     </ul>

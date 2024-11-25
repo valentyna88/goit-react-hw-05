@@ -31,7 +31,9 @@ const MovieReviews = () => {
 
   if (error) return <h2>{error}</h2>;
   if (!reviews || reviews.length === 0)
-    return <p>No reviews available for this movie.</p>;
+    return (
+      <p className={css.noReviews}>No reviews available for this movie.</p>
+    );
 
   return (
     <section>

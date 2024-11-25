@@ -34,8 +34,15 @@ const MovieDetailsPage = () => {
   if (error) return <h2>{error}</h2>;
   if (!movie) return null;
 
-  const { title, poster_path, overview, vote_average, genres, release_date } =
-    movie;
+  const {
+    title,
+    poster_path,
+    overview,
+    vote_average,
+    genres,
+    release_date,
+    runtime,
+  } = movie;
 
   const buildLinkClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
@@ -66,6 +73,12 @@ const MovieDetailsPage = () => {
               <p className={css.text}>
                 {release_date ? release_date.split('-')[0] : ''}
               </p>
+            </div>
+
+            <div className={css.infoItem}>
+              <h3 className={css.subtitle}>Runtime:</h3>
+              <span className={css.dashedLine}></span>
+              <p className={css.text}>{runtime} min</p>
             </div>
 
             <div className={css.infoItem}>
