@@ -14,7 +14,7 @@
 }
 .cardWrapper {
   background-color: #32353f;
-  padding-bottom: 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,6 @@
   max-width: 300px;
   border-radius: 8px;
   margin-bottom: 20px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 .infoWrapper {
   display: flex;
@@ -48,11 +47,6 @@
   border-bottom: 1px dashed #bbbbbb;
   margin-bottom: 10px;
 }
-.text {
-  color: #eeeeee;
-  margin: 0;
-}
-
 .list {
   display: flex;
   gap: 10px;
@@ -61,7 +55,6 @@
 }
 .item {
   font-size: 0.9rem;
-  color: #eeeeee;
   background-color: #464545;
   padding: 5px 10px;
   border-radius: 4px;
@@ -75,7 +68,6 @@
 .link {
   padding: 8px 16px;
   border-radius: 4px;
-  text-decoration: none;
   color: #7af1f7;
   font-weight: 500;
   font-size: 16px;
@@ -100,22 +92,14 @@
   .cardWrapper {
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 20px;
   }
-  /* .infoItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
-  } */
   .subtitle {
-    margin-right: 10px;
     min-width: 120px;
   }
   .dashedLine {
     flex-shrink: 0;
-    width: 50px;
     margin: 0 10px;
     align-self: center;
   }
@@ -125,9 +109,6 @@
   .text {
     flex-grow: 1;
   }
-  .infoWrapper {
-    width: 60%;
-  }
   .infoLinks {
     margin-bottom: 20px;
   }
@@ -136,6 +117,7 @@
 @media (min-width: 1024px) {
   .container {
     width: 80%;
+    margin: 50px auto;
   }
   .title {
     font-size: 2.5rem;
@@ -146,12 +128,14 @@
     align-items: center;
     margin-bottom: 10px;
   }
-  .subtitle {
-    margin-right: 15px;
+  .dashedLine {
+    width: 100px;
   }
-  /* .infoLinks {
+  .infoLinks {
     flex-direction: row;
-    justify-content: center;
     gap: 50px;
-  } */
+  }
+  .link {
+    font-size: 20px;
+  }
 }
