@@ -6,7 +6,7 @@
 }
 .movieItem {
   padding: 10px;
-  background-color: #32353f;
+  background-color: var(--bg-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,7 +24,7 @@
 .movieTitle {
   font-size: 18px;
   font-weight: 500;
-  color: #eeeeee;
+  color: var(--text-color);
   margin: 10px 0;
   text-align: center;
   word-wrap: break-word;

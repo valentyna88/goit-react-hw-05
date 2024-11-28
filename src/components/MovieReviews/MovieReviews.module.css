@@ -9,8 +9,8 @@
   border: 1px solid #10333d;
   border-radius: 10px;
   overflow: hidden;
-  background-color: #32353f;
-  color: #eeeeee;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 .reviewAuthor {
   display: flex;
@@ -29,6 +29,6 @@
   scrollbar-width: thin;
 }
 .noReviews {
-  color: #eeeeee;
+  color: var(--text-color);
   text-align: center;
 }

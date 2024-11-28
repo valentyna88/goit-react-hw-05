@@ -6,8 +6,8 @@
 }
 .castItem {
   width: 150px;
-  background-color: #32353f;
-  color: #eeeeee;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 .castImage {
   height: 150px;
