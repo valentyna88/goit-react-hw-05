@@ -6,6 +6,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --bg-color: #32353f;
+  --bg-hover-link: #f0f0f0;
+  --color-active-link: #ff4500;
   --text-color: #eeeeee;
 }
 body {
