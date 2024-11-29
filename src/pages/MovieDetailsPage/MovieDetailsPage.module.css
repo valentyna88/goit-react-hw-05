@@ -4,16 +4,16 @@
   margin: 20px auto;
 }
 .titleBlock {
-  background-color: #32353f;
+  background-color: var(--bg-color);
 }
 .title {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
-  color: #ff4500;
+  color: var(--color-active-link);
 }
 .cardWrapper {
-  background-color: #32353f;
+  background-color: var(--bg-color);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -39,12 +39,12 @@
 .subtitle {
   font-size: 1rem;
   font-weight: bold;
-  color: #bbbbbb;
+  color: var(--subtitle-color);
   margin-bottom: 5px;
 }
 .dashedLine {
   width: 100%;
-  border-bottom: 1px dashed #bbbbbb;
+  border-bottom: 1px dashed var(--subtitle-color);
   margin-bottom: 10px;
 }
 .list {
@@ -55,7 +55,7 @@
 }
 .item {
   font-size: 0.9rem;
-  background-color: #464545;
+  background-color: var(--bg-color-item);
   padding: 5px 10px;
   border-radius: 4px;
 }
@@ -63,23 +63,23 @@
   display: flex;
   gap: 10px;
   padding-bottom: 20px;
-  background-color: #32353f;
+  background-color: var(--bg-color);
 }
 .link {
   padding: 8px 16px;
   border-radius: 4px;
-  color: #7af1f7;
+  color: var(--link-color);
   font-weight: 500;
   font-size: 16px;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link:hover {
-  background-color: #f0f0f0;
-  color: orangered;
+  background-color: var(--bg-hover-link);
+  color: var(--color-active-link);
 }
 .active {
-  color: orangered;
+  color: var(--color-active-link);
 }
 
 @media (min-width: 768px) {

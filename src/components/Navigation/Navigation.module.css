@@ -14,7 +14,7 @@
   padding: 8px 16px;
   border-radius: 4px;
   text-decoration: none;
-  color: #7af1f7;
+  color: var(--link-color);
   font-weight: 500;
   font-size: 20px;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
