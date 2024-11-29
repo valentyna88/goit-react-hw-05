@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
-import { fetchMovieDetails } from '../../api';
+import { fetchMovieDetails, fetchMovieReviews } from '../../api';
 import GoBack from '../../components/GoBack/GoBack';
 import css from './MovieDetailsPage.module.css';
 import clsx from 'clsx';
 import DocumentTitle from '../../components/DocumentTitle';
+import { FaRegCommentDots } from 'react-icons/fa';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [reviewCount, setReviewCount] = useState(0);
 
   const location = useLocation();
   const backLinkHref = location.state ?? '/movies';
@@ -30,6 +32,18 @@ const MovieDetailsPage = () => {
     loadMoviesDetails();
   }, [movieId]);
 
+  useEffect(() => {
+    const loadMovieReviews = async () => {
+      try {
+        const reviewsData = await fetchMovieReviews(movieId);
+        setReviewCount(reviewsData.length);
+      } catch {
+        console.error('Failed to load reviews');
+      }
+    };
+    loadMovieReviews();
+  }, [movieId]);
+
   if (loading) return <Loader />;
   if (error) return <h2>{error}</h2>;
   if (!movie) return null;
@@ -42,6 +56,7 @@ const MovieDetailsPage = () => {
     genres,
     release_date,
     runtime,
+    production_countries,
   } = movie;
 
   const buildLinkClass = ({ isActive }) => {
@@ -76,6 +91,32 @@ const MovieDetailsPage = () => {
             </div>
 
             <div className={css.infoItem}>
+              <h3 className={css.subtitle}>Production:</h3>
+              <span className={css.dashedLine}></span>
+              <p className={css.text}>
+                {production_countries && production_countries.length > 0
+                  ? production_countries.map(country => country.name).join(', ')
+                  : 'No information available'}
+              </p>
+            </div>
+
+            <div className={css.infoItem}>
+              <h3 className={css.subtitle}>Genres: </h3>
+              <span className={css.dashedLine}></span>
+              <ul className={css.list}>
+                {genres && genres.length > 0 ? (
+                  genres.map(genre => (
+                    <li className={css.item} key={genre.id}>
+                      {genre.name}
+                    </li>
+                  ))
+                ) : (
+                  <li className={css.item}>No genres available</li>
+                )}
+              </ul>
+            </div>
+
+            <div className={css.infoItem}>
               <h3 className={css.subtitle}>Runtime:</h3>
               <span className={css.dashedLine}></span>
               <p className={css.text}>{runtime} min</p>
@@ -95,20 +136,13 @@ const MovieDetailsPage = () => {
               <p className={css.text}>{overview}</p>
             </div>
 
-            <div className={css.infoItem}>
-              <h3 className={css.subtitle}>Genres: </h3>
-              <span className={css.dashedLine}></span>
-              <ul className={css.list}>
-                {genres && genres.length > 0 ? (
-                  genres.map(genre => (
-                    <li className={css.item} key={genre.id}>
-                      {genre.name}
-                    </li>
-                  ))
-                ) : (
-                  <li className={css.item}>No genres available</li>
-                )}
-              </ul>
+            <div className={css.commentsBlock}>
+              <FaRegCommentDots className={css.commentIcon} />
+              <span>
+                {reviewCount > 0
+                  ? `${reviewCount} Comment${reviewCount > 1 ? 's' : ''}`
+                  : 'No comments yet'}
+              </span>
             </div>
           </div>
         </section>
