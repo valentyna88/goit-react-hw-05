@@ -1,0 +1,17 @@
+.stars {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+  margin-right: 15px;
+}
+
+.starFilled {
+  color: #ff6b08;
+  font-size: 1.5rem;
+}
+
+.starEmpty {
+  color: #ddd;
+  font-size: 1.5rem;
+}

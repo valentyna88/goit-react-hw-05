@@ -1,4 +1,5 @@
 import { FaRegCommentDots } from 'react-icons/fa';
+import RatingStars from '../../components/RatingStars/RatingStars';
 import css from './MovieDetails.module.css';
 
 const MovieDetails = ({ movie, reviewCount }) => {
@@ -17,6 +18,7 @@ const MovieDetails = ({ movie, reviewCount }) => {
     <>
       <div className={css.titleBlock}>
         <h2 className={css.title}>{title}</h2>
+        <RatingStars rating={vote_average} />
       </div>
       <section className={css.cardWrapper}>
         <img
