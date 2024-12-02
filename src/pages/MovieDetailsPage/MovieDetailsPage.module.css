@@ -3,15 +3,7 @@
   width: 100%;
   margin: 20px auto;
 }
-.titleBlock {
-  background-color: var(--bg-color);
-}
-.title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  color: var(--color-active-link);
-}
+
 .cardWrapper {
   background-color: var(--bg-color);
   padding: 20px;
@@ -19,59 +11,6 @@
   flex-direction: column;
   align-items: center;
 }
-.poster {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-}
-.infoWrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  overflow-y: auto;
-}
-.infoItem {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.subtitle {
-  font-size: 1rem;
-  font-weight: bold;
-  color: var(--subtitle-color);
-  margin-bottom: 5px;
-}
-.dashedLine {
-  width: 100%;
-  border-bottom: 1px dashed var(--subtitle-color);
-  margin-bottom: 10px;
-}
-.list {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-left: 20px;
-}
-.item {
-  font-size: 0.9rem;
-  background-color: var(--bg-color-item);
-  padding: 5px 10px;
-  border-radius: 4px;
-}
-
-.commentIcon {
-  color: #ff6b08;
-  margin-right: 8px;
-  font-size: 20px;
-}
-
-.commentsBlock {
-  display: flex;
-  align-items: center;
-  margin-top: 16px;
-}
-
 .infoLinks {
   display: flex;
   gap: 10px;
@@ -95,38 +34,6 @@
   color: var(--color-active-link);
 }
 
-@media (min-width: 768px) {
-  .container {
-    width: 90%;
-  }
-  .title {
-    font-size: 2rem;
-  }
-  .cardWrapper {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 20px;
-  }
-  .subtitle {
-    min-width: 120px;
-  }
-  .dashedLine {
-    flex-shrink: 0;
-    margin: 0 10px;
-    align-self: center;
-  }
-  .poster {
-    margin-left: 20px;
-  }
-  .text {
-    flex-grow: 1;
-  }
-  .infoLinks {
-    margin-bottom: 20px;
-  }
-}
-
 @media (min-width: 1024px) {
   .container {
     width: 80%;
@@ -135,15 +42,7 @@
   .title {
     font-size: 2.5rem;
   }
-  .infoItem {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  .dashedLine {
-    width: 100px;
-  }
+
   .infoLinks {
     flex-direction: row;
     gap: 50px;
