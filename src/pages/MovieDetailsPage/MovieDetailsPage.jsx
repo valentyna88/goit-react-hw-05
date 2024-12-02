@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation, useParams } from 'react-router-dom';
 import Loader from '../../components/Loader/Loader';
 import { fetchMovieDetails, fetchMovieReviews } from '../../api';
@@ -17,31 +17,25 @@ const MovieDetailsPage = () => {
 
   const location = useLocation();
   const backLinkHref = location.state ?? '/movies';
+
   useEffect(() => {
-    const loadMoviesDetails = async () => {
+    const loadMovieDetails = async () => {
       setLoading(true);
       try {
         const movieDetails = await fetchMovieDetails(movieId);
         setMovie(movieDetails);
+
+        const reviewsData = await fetchMovieReviews(movieId);
+        setReviewCount(reviewsData.length);
       } catch {
-        setError('Failed to load movie details');
+        setError(
+          'Failed to load movie details or reviews. Please try again later.'
+        );
       } finally {
         setLoading(false);
       }
     };
-    loadMoviesDetails();
-  }, [movieId]);
-
-  useEffect(() => {
-    const loadMovieReviews = async () => {
-      try {
-        const reviewsData = await fetchMovieReviews(movieId);
-        setReviewCount(reviewsData.length);
-      } catch {
-        console.error('Failed to load reviews');
-      }
-    };
-    loadMovieReviews();
+    loadMovieDetails();
   }, [movieId]);
 
   if (loading) return <Loader />;
@@ -140,8 +134,8 @@ const MovieDetailsPage = () => {
               <FaRegCommentDots className={css.commentIcon} />
               <span>
                 {reviewCount > 0
-                  ? `${reviewCount} Comment${reviewCount > 1 ? 's' : ''}`
-                  : 'No comments yet'}
+                  ? `${reviewCount} Review${reviewCount > 1 ? 's' : ''}`
+                  : 'No reviews yet'}
               </span>
             </div>
           </div>
@@ -167,8 +161,9 @@ const MovieDetailsPage = () => {
             </NavLink>
           </li>
         </ul>
-
-        <Outlet />
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );
