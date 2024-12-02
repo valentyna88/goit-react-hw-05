@@ -3,6 +3,7 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 15px;
+  margin-top: 15px;
 }
 .castItem {
   width: 150px;
